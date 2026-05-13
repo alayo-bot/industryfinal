@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Emergency Management?</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #111;
+  color: #fff;
+  font-family: 'Source Serif 4', Georgia, serif;
+  overflow-x: hidden;
+}
+
+/* ── FADE-IN ON SCROLL ─────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── HEADER ────────────────────────────────── */
+header {
+  position: relative;
+  text-align: center;
+  padding: 4.5rem 1.5rem 3.5rem;
+  overflow: hidden;
+  border-bottom: 2px solid #CC2200;
+}
+
+/* pulse ring behind title */
+header::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 1px solid rgba(204,34,0,0.15);
+  transform: translate(-50%, -50%);
+  animation: pulse 3s ease-out infinite;
+}
+header::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  border: 1px solid rgba(204,34,0,0.07);
+  transform: translate(-50%, -50%);
+  animation: pulse 3s ease-out 1s infinite;
+}
+@keyframes pulse {
+  0%   { transform: translate(-50%,-50%) scale(0.6); opacity: 0.8; }
+  100% { transform: translate(-50%,-50%) scale(1.4); opacity: 0; }
+}
+
+.header-eyebrow {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: #CC2200;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: #fff;
+  position: relative;
+}
+
+header h1 span { color: #CC2200; }
+
+.header-sub {
+  margin-top: 1rem;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-style: italic;
+  color: #777;
+  max-width: 520px;
+  margin-inline: auto;
+  line-height: 1.75;
+  position: relative;
+}
+
+/* ── SECTION WRAPPER ───────────────────────── */
+.section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem;
+}
+
+.section-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  color: #CC2200;
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #CC2200;
+  opacity: 0.3;
+}
+
+.section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  letter-spacing: 0.06em;
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+.section h2 span { color: #CC2200; }
+
+.section p {
+  font-size: clamp(0.88rem, 1.8vw, 0.98rem);
+  line-height: 1.85;
+  color: #aaa;
+  max-width: 680px;
+}
+.section p strong { color: #fff; font-style: italic; }
+
+/* ── DIVIDER ───────────────────────────────── */
+.divider {
+  max-width: 860px;
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #2a2a2a, transparent);
+}
+
+/* ── FOUR PHASES GRID ──────────────────────── */
+.phases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: #1e1e1e;
+  border: 1px solid #1e1e1e;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.phase {
+  background: #141414;
+  padding: 1.6rem 1.3rem;
+  position: relative;
+  transition: background 0.25s;
+}
+.phase:hover { background: #1c1c1c; }
+
+.phase::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: #CC2200;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.phase:hover::before { transform: scaleX(1); }
+
+.phase-icon {
+  margin-bottom: 0.8rem;
+}
+
+.phase-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: #CC2200;
+  margin-bottom: 0.5rem;
+}
+
+.phase p {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: #888;
+  font-style: italic;
+}
+
+/* ── WHY IT MATTERS — STAT CARDS ───────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  background: #141414;
+  border: 1px solid #1e1e1e;
+  border-left: 3px solid #CC2200;
+  border-radius: 2px;
+  padding: 1.4rem 1.2rem;
+  transition: box-shadow 0.25s;
+}
+.stat-card:hover {
+  box-shadow: 0 0 20px rgba(204,34,0,0.12);
+}
+
+.stat-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 0.04em;
+  color: #CC2200;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  /* count-up animation via JS */
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #777;
+  line-height: 1.55;
+}
+
+/* ── REASONS LIST ──────────────────────────── */
+.reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.reason {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  background: #141414;
+  border: 1px solid #1e1e1e;
+  border-radius: 2px;
+  padding: 1.1rem 1.3rem;
+  transition: border-color 0.25s;
+}
+.reason:hover { border-color: #CC2200; }
+
+.reason-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: rgba(204,34,0,0.25);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: right;
+  transition: color 0.25s;
+}
+.reason:hover .reason-num { color: #CC2200; }
+
+.reason-body h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+
+.reason-body p {
+  font-size: 0.83rem;
+  line-height: 1.7;
+  color: #888;
+  font-style: italic;
+  max-width: 100%;
+}
+
+/* ── PULL QUOTE ────────────────────────────── */
+.pull {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.pull blockquote {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  line-height: 1.75;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 1.5rem;
+}
+
+.pull blockquote::before {
+  content: '"';
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  color: #CC2200;
+  opacity: 0.35;
+  position: absolute;
+  top: -1.5rem; left: -0.5rem;
+  line-height: 1;
+}
+
+.pull cite {
+  display: block;
+  margin-top: 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-style: normal;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: #CC2200;
+}
+
+/* ── FOOTER ────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  border-top: 1px solid #1e1e1e;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #333;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════ -->
+<header>
+  <div class="header-eyebrow">ArcGIS StoryMaps · Emergency Management Series</div>
+  <h1>What Is <span>Emergency</span><br>Management?</h1>
+  <p class="header-sub">The organized effort to protect communities from hazards — before, during, and after disaster strikes.</p>
+</header>
+
+<!-- ══ SECTION 1 — DEFINITION ══════════════════════ -->
+<section class="section reveal">
+  <div class="section-label">Section 01</div>
+  <h2>The <span>Mission</span></h2>
+  <p>Emergency management is the <strong>science and practice of preparing for, responding to, recovering from, and reducing the risk of disasters.</strong> It is a continuous, community-wide effort — not a single moment of crisis response — that spans government agencies, first responders, nonprofit organizations, and everyday citizens.</p>
+  <p style="margin-top:1rem;">At its core, emergency management asks one fundamental question: <strong>how do we protect people and communities from the forces that threaten them?</strong> Whether those threats are natural — hurricanes, earthquakes, wildfires — or human-made — chemical spills, infrastructure failures, mass casualty events — emergency management provides the framework for a coordinated, effective answer.</p>
+
+  <!-- FOUR PHASES -->
+  <div class="phases">
+
+    <div class="phase reveal">
+      <div class="phase-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="12" stroke="#CC2200" stroke-width="1.4" stroke-dasharray="3 2"/>
+          <path d="M14 8v6l4 2" stroke="#CC2200" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="phase-name">Mitigation</div>
+      <p>Reducing long-term risk before disasters occur through land-use planning, building codes, and public education.</p>
+    </div>
+
+    <div class="phase reveal">
+      <div class="phase-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect x="4" y="7" width="20" height="16" rx="1.5" stroke="#CC2200" stroke-width="1.4"/>
+          <path d="M4 12h20" stroke="#CC2200" stroke-width="1" opacity="0.5"/>
+          <path d="M9 17h4M9 20h6" stroke="#CC2200" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M14 3v4" stroke="#CC2200" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="phase-name">Preparedness</div>
+      <p>Planning, training, and equipping agencies and communities to act effectively when an incident occurs.</p>
+    </div>
+
+    <div class="phase reveal">
+      <div class="phase-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M14 3L3 25h22L14 3z" stroke="#CC2200" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M14 12v6" stroke="#CC2200" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="14" cy="21" r="1.2" fill="#CC2200"/>
+        </svg>
+      </div>
+      <div class="phase-name">Response</div>
+      <p>Immediate actions taken during an incident to save lives, protect property, and meet basic human needs.</p>
+    </div>
+
+    <div class="phase reveal">
+      <div class="phase-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M5 20c3-8 12-12 18-8" stroke="#CC2200" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M20 9l3 3-3 3" stroke="#CC2200" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="phase-name">Recovery</div>
+      <p>Restoring affected communities to normal conditions, addressing physical, economic, and social impacts.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 2 — WHY IT MATTERS ══════════════════ -->
+<section class="section reveal">
+  <div class="section-label">Section 02</div>
+  <h2>Why It <span>Matters</span></h2>
+  <p>Disasters are inevitable. Their consequences are not. <strong>Effective emergency management is what separates a manageable crisis from a catastrophe.</strong> When systems are in place — trained personnel, clear plans, reliable communication, and accurate information — communities survive and recover. When they are absent, the cost in lives and livelihoods is immeasurable.</p>
+
+  <!-- STAT CARDS -->
+  <div class="stats">
+    <div class="stat-card reveal">
+      <div class="stat-number" data-target="400">0</div>
+      <div class="stat-label">Weather and climate disasters occur globally each year on average</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-number" data-target="150" data-suffix="B+">0</div>
+      <div class="stat-label">Dollars in annual economic losses from natural disasters in the U.S.</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-number" data-target="6" data-suffix="x">0</div>
+      <div class="stat-label">Every $1 invested in preparedness saves up to $6 in disaster recovery costs</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="stat-number" data-target="57">0</div>
+      <div class="stat-label">Federally declared disasters in the United States in a single recent year</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SECTION 3 — WHY EM SAVES LIVES ══════════════ -->
+<section class="section reveal">
+  <div class="section-label">Section 03</div>
+  <h2>How It <span>Saves Lives</span></h2>
+  <p>Emergency management does not eliminate disasters — it dramatically reduces their impact. Here is how:</p>
+
+  <div class="reasons">
+
+    <div class="reason reveal">
+      <div class="reason-num">01</div>
+      <div class="reason-body">
+        <h3>Early Warning Saves Lives</h3>
+        <p>Hazard monitoring and alert systems give communities critical minutes or hours to evacuate, shelter, or prepare — minutes that translate directly into survivors.</p>
+      </div>
+    </div>
+
+    <div class="reason reveal">
+      <div class="reason-num">02</div>
+      <div class="reason-body">
+        <h3>Coordinated Response Prevents Chaos</h3>
+        <p>Clear chains of command, pre-established plans, and interoperable communication prevent the confusion that costs lives in the critical first hours of a disaster.</p>
+      </div>
+    </div>
+
+    <div class="reason reveal">
+      <div class="reason-num">03</div>
+      <div class="reason-body">
+        <h3>Preparedness Protects the Vulnerable</h3>
+        <p>Identifying at-risk populations — elderly, disabled, low-income — before disasters strike ensures resources reach those who need them most when it matters most.</p>
+      </div>
+    </div>
+
+    <div class="reason reveal">
+      <div class="reason-num">04</div>
+      <div class="reason-body">
+        <h3>Recovery Rebuilds Communities</h3>
+        <p>Structured recovery programs restore housing, infrastructure, and economic activity faster and more equitably, preventing the long-term decline that follows unmanaged disasters.</p>
+      </div>
+    </div>
+
+    <div class="reason reveal">
+      <div class="reason-num">05</div>
+      <div class="reason-body">
+        <h3>Mitigation Breaks the Cycle</h3>
+        <p>Investing in flood barriers, fire-resistant building codes, and land-use planning reduces the frequency and severity of future disasters — creating communities that are inherently safer.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ PULL QUOTE ═══════════════════════════════════ -->
+<div class="pull reveal">
+  <blockquote>
+    Emergency management is not about responding to disasters. It is about building communities resilient enough that disasters do not become catastrophes.
+    <cite>— Core Principle of Emergency Management</cite>
+  </blockquote>
+</div>
+
+<!-- ══ FOOTER ══════════════════════════════════════ -->
+<footer>What Is Emergency Management · ArcGIS StoryMaps</footer>
+
+<script>
+  /* ── SCROLL REVEAL ────────────────────────────── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        // slight stagger for sibling groups
+        const siblings = [...e.target.parentElement.children].filter(c => c.classList.contains('reveal'));
+        const idx = siblings.indexOf(e.target);
+        setTimeout(() => e.target.classList.add('visible'), idx * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  /* ── COUNT-UP NUMBERS ─────────────────────────── */
+  const statEls = document.querySelectorAll('.stat-number[data-target]');
+  const numIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el     = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const step = 16;
+      const steps = duration / step;
+      let current = 0;
+      const increment = target / steps;
+      const timer = setInterval(() => {
+        current = Math.min(current + increment, target);
+        el.textContent = Math.floor(current) + suffix;
+        if (current >= target) clearInterval(timer);
+      }, step);
+      numIO.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  statEls.forEach(el => numIO.observe(el));
+</script>
+
+</body>
+</html>
