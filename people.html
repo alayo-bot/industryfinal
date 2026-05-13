@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Key Figures</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #111;
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  padding: 2rem 1.5rem 2.5rem;
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  color: #CC2200;
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #1a1a1a;
+  border-top: 3px solid #CC2200;
+  border-radius: 2px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(40%);
+  display: block;
+}
+
+.card-body {
+  padding: 0.9rem 0.8rem 1rem;
+}
+
+.name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.dates {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: #444;
+  margin-bottom: 0.6rem;
+}
+
+.desc {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: #aaa;
+  line-height: 1.65;
+}
+
+@media (max-width: 520px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<h2>Key Figures in Emergency Mapping</h2>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/John_Snow_by_Thomas_Jones_Barker.jpg/440px-John_Snow_by_Thomas_Jones_Barker.jpg" alt="John Snow">
+    <div class="card-body">
+      <div class="name">John Snow</div>
+      <div class="dates">1813 – 1858</div>
+      <div class="desc">Used a dot map to identify the source of London's 1854 cholera outbreak — the first use of spatial analysis in emergency response.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Roger_Tomlinson.jpg/440px-Roger_Tomlinson.jpg" alt="Roger Tomlinson" onerror="this.style.display='none'">
+    <div class="card-body">
+      <div class="name">Roger Tomlinson</div>
+      <div class="dates">1933 – 2014</div>
+      <div class="desc">Invented the Geographic Information System in the 1960s, making it possible to layer spatial data for disaster planning and response.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Jack_Dangermond.jpg/440px-Jack_Dangermond.jpg" alt="Jack Dangermond" onerror="this.style.display='none'">
+    <div class="card-body">
+      <div class="name">Jack Dangermond</div>
+      <div class="dates">1945 – Present</div>
+      <div class="desc">Founded Esri and developed ArcGIS, putting real-time GIS tools in the hands of emergency managers across more than 200 countries.</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
